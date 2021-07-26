@@ -76,6 +76,21 @@ public class BinarySearchTree {
         System.out.println("Size of this Binary Search Tree : "+ (leftNodeCount+rightNodeCount+1));
     }
 
+    //Searching given Node in Tree
+    public boolean searchNode(int x, Node node){
+        if (node == null)
+            return false;
+        if (node.key == x)
+            return true;
+        boolean leftSearch = searchNode(x, node.left);
+        if (leftSearch)
+            return true;
+        boolean rightSearch = searchNode(x, node.right);
+        if (rightSearch)
+            return true;
+        return false;
+    }
+
 
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
@@ -93,6 +108,14 @@ public class BinarySearchTree {
 
         //Displays Size of the binary tree
         tree.size();
+
+        //Search given node
+        if (tree.searchNode(63, tree.root)){
+            System.out.println("Node found in Tree");
+        }else {
+            System.out.println("!!! Not found in Tree !!!");
+        }
+
 
 
 
